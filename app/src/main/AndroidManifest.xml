@@ -33,6 +33,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".DayDifference">
+            <intent-filter>
+                <action android:name="android.intent.action.DAYDIFFERENCE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>

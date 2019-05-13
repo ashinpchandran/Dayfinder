@@ -38,8 +38,8 @@ public class Home extends AppCompatActivity {
 
         if(v.getId()==R.id.imageButton2)
         {
-            Toast.makeText(this,
-                    "ImageButton2 is clicked!", Toast.LENGTH_SHORT).show();
+            Intent daydifferenceIntent = new Intent(Home.this,DayDifference.class);
+            startActivity(daydifferenceIntent);
         }
 
         if(v.getId()==R.id.imageButton3)
