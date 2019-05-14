@@ -9,11 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.NumberPicker;
 
-public class WeekDifference extends AppCompatActivity {
+public class MonthDifference extends AppCompatActivity {
 
     public NumberPicker np1,np2,np3,np4,np5,np6;
     public String[] months;
-    public int dif=0,w=0,r=0;
+    public int dif=0,mt=0,r=0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,13 +28,12 @@ public class WeekDifference extends AppCompatActivity {
 
         setContentView(R.layout.daydifference);
 
-
-        np1 = (NumberPicker) findViewById(R.id.np1);
-        np2 = (NumberPicker) findViewById(R.id.np2);
-        np3 = (NumberPicker) findViewById(R.id.np3);
-        np4 = (NumberPicker) findViewById(R.id.np4);
-        np5 = (NumberPicker) findViewById(R.id.np5);
-        np6 = (NumberPicker) findViewById(R.id.np6);
+        np1 =  findViewById(R.id.np1);
+        np2 =  findViewById(R.id.np2);
+        np3 =  findViewById(R.id.np3);
+        np4 =  findViewById(R.id.np4);
+        np5 =  findViewById(R.id.np5);
+        np6 =  findViewById(R.id.np6);
 
         np1.setMinValue(1);
         np1.setMaxValue(31);
@@ -46,8 +45,7 @@ public class WeekDifference extends AppCompatActivity {
         np3.setValue(2017);
         np6.setMinValue(1000);
         np6.setMaxValue(9999);
-        np6.setValue(2019);
-
+        np6.setValue(2017);
 
         String[] months = new String[12];
         months[0] = "January";
@@ -63,22 +61,18 @@ public class WeekDifference extends AppCompatActivity {
         months[10]= "November";
         months[11]= "December";
 
-
         np2.setMaxValue(months.length-1);
         np2.setMinValue(0);
         np2.setDisplayedValues(months);
         np5.setMaxValue(months.length-1);
         np5.setMinValue(0);
         np5.setDisplayedValues(months);
-
-
-
     }
 
     public void open()
     {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(w+" Weeks and "+ r +" Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setTitle(mt+" Months and "+ r +" Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -95,7 +89,7 @@ public class WeekDifference extends AppCompatActivity {
     public void open1()
     {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(w + " Weeks").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setTitle(mt + " Months").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -126,7 +120,6 @@ public class WeekDifference extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
     }
-
     public void onClick(View v)
     {
         if(v.getId()==R.id.day_diff_button)
@@ -141,12 +134,8 @@ public class WeekDifference extends AppCompatActivity {
             if((y1==y2)&&(m1==m2)&&(d2>d1))
             {
                 dif=d2-d1;
-                w=dif/7;
-                r=dif%7;
-                if(r==0)
-                    open1();
-                else
-                    open();
+                r=dif;
+                open();
             }
             if((y1==y2)&&(m1!=m2)&&(m2>m1))
             {
@@ -164,8 +153,8 @@ public class WeekDifference extends AppCompatActivity {
                 if((m2-m1)==0)
                 {
                     dif=rd1+rd2;
-                    w=dif/7;
-                    r=dif%7;
+                    mt=dif/30;
+                    r=dif%30;
                     if(r==0)
                         open1();
                     else
@@ -176,21 +165,11 @@ public class WeekDifference extends AppCompatActivity {
                     int mid=0;
                     for(int i = m1+1;i<m2;i++)
                     {
-                        if(i==0||i==2||i==4||i==6||i==7||i==9||i==11)
-                            mid=mid+31;
-                        if(i==3||i==5||i==8||i==10)
-                            mid=mid+30;
-                        if(i==1)
-                        {
-                            if(y1%4==0)
-                                mid=mid+29;
-                            else
-                                mid=mid+28;
-                        }
+                        mid++;
                     }
-                    dif=rd1+mid+rd2;
-                    w=dif/7;
-                    r=dif%7;
+                    dif=mid+((rd2+rd1)/30);
+                    mt=dif;
+                    r=((rd2+rd1)%30);
                     if(r==0)
                         open1();
                     else
@@ -219,44 +198,21 @@ public class WeekDifference extends AppCompatActivity {
 
                 for(int i = m1+1;i<=11;i++)
                 {
-                    if(i==0||i==2||i==4||i==6||i==7||i==9||i==11)
-                        mid=mid+31;
-                    if(i==3||i==5||i==8||i==10)
-                        mid=mid+30;
-                    if(i==1)
-                    {
-                        if(y1%4==0)
-                            mid=mid+29;
-                        else
-                            mid=mid+28;
-                    }
+                    mid++;
                 }
                 for(int j=y1+1;j<y2;j++)
                 {
 
-                    if(j%4==0)
-                        mid=mid+366;
-                    else
-                        mid=mid+365;
+                    mid=mid+12;
 
                 }
                 for(int h=0;h<m2;h++)
                 {
-                    if(h==0||h==2||h==4||h==6||h==7||h==9||h==11)
-                        mid=mid+31;
-                    if(h==3||h==5||h==8||h==10)
-                        mid=mid+30;
-                    if(h==1)
-                    {
-                        if(y1%4==0)
-                            mid=mid+29;
-                        else
-                            mid=mid+28;
-                    }
+                    mid++;
                 }
-                dif=rd1+mid+rd2;
-                w=dif/7;
-                r=dif%7;
+                dif=mid+((rd2+rd1)/30);
+                mt=dif;
+                r=((rd2+rd1)%30);
                 if(r==0)
                     open1();
                 else
