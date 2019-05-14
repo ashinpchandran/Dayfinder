@@ -19,6 +19,7 @@ public class Home extends AppCompatActivity {
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            assert getSupportActionBar() != null;
             getSupportActionBar().hide();
         }
 
@@ -50,8 +51,8 @@ public class Home extends AppCompatActivity {
 
         if(v.getId()==R.id.imageButton4)
         {
-            Toast.makeText(this,
-                    "ImageButton4 is clicked!", Toast.LENGTH_SHORT).show();
+            Intent monthdifferenceIntent = new Intent(Home.this,MonthDifference.class);
+            startActivity(monthdifferenceIntent);
         }
     }
 

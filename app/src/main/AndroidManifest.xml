@@ -22,6 +22,7 @@
                 <action android:name="android.intent.action.HOME" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
 
@@ -44,6 +45,14 @@
         <activity android:name=".WeekDifference">
             <intent-filter>
                 <action android:name="android.intent.action.WEEKDIFFERENCE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MonthDifference">
+            <intent-filter>
+                <action android:name="android.intent.action.MONTHDIFFERENCE" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>

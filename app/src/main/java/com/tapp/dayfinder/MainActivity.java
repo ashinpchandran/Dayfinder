@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            assert getSupportActionBar() != null;
             getSupportActionBar().hide();
         }
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(HomeIntent);
                 }
                 catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
+
                     e.printStackTrace();
                 }
 
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onPause() {
-        // TODO Auto-generated method stub
+
         super.onPause();
 
     }
