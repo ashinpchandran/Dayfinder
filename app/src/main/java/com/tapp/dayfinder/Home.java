@@ -44,8 +44,8 @@ public class Home extends AppCompatActivity {
 
         if(v.getId()==R.id.imageButton3)
         {
-            Toast.makeText(this,
-                    "ImageButton3 is clicked!", Toast.LENGTH_SHORT).show();
+            Intent weekdifferenceIntent = new Intent(Home.this,WeekDifference.class);
+            startActivity(weekdifferenceIntent);
         }
 
         if(v.getId()==R.id.imageButton4)
