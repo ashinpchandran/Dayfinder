@@ -41,6 +41,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".WeekDifference">
+            <intent-filter>
+                <action android:name="android.intent.action.WEEKDIFFERENCE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
