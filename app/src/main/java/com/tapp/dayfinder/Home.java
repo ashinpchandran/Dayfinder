@@ -5,12 +5,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.Button;
+
 
 public class Home extends AppCompatActivity {
 
-    ImageButton imageButton1, imageButton2, imageButton3, imageButton4;
+    Button imageButton1, imageButton2, imageButton3, imageButton4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
