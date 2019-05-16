@@ -6,14 +6,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.NumberPicker;
 
 public class MonthDifference extends AppCompatActivity {
 
     public NumberPicker np1,np2,np3,np4,np5,np6;
     public int dif=0,mt=0,r=0;
-    Button calculate;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,12 +26,7 @@ public class MonthDifference extends AppCompatActivity {
 
         setContentView(R.layout.daydifference);
 
-//        Dynamically changing the background and text color of the button. Since 3 classes (DayDifference, WeekDifference, and MonthDifference)
-//        are using the same layout file. The button color used to be the same for the three. For making it different the below code is used.
 
-        calculate = findViewById(R.id.day_diff_button);
-        calculate.setBackgroundColor(getColor(R.color.colorPrimary));
-        calculate.setTextColor(getColor(R.color.white));
 
         np1 =  findViewById(R.id.np1);
         np2 =  findViewById(R.id.np2);
@@ -143,7 +137,7 @@ public class MonthDifference extends AppCompatActivity {
                 r=dif;
                 open();
             }
-            if((y1==y2)&&(m1!=m2)&&(m2>m1))
+            if((y1==y2)&&(m2>m1))
             {
                 int rd1=0,rd2=0;
                 if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
