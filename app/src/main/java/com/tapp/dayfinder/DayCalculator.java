@@ -1,6 +1,5 @@
 package com.tapp.dayfinder;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,27 +10,24 @@ import android.widget.TextView;
 public class DayCalculator extends AppCompatActivity {
 
 
-    public TextView dayt;
+    public TextView day_display_text_view;
     public NumberPicker np1,np2,np3;
-    public String[] months;
-    public String[] weekdays;
-    public int[] days;
-    public int[] calc;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
+
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             assert getSupportActionBar() != null;
             getSupportActionBar().hide();
-        }
+
 
         setContentView(R.layout.daycalculator);
 
-        dayt =  findViewById(R.id.textView2);
+        day_display_text_view =  findViewById(R.id.textView2);
 
         np1 =  findViewById(R.id.np1);
         np2 =  findViewById(R.id.np2);
@@ -153,7 +149,7 @@ public class DayCalculator extends AppCompatActivity {
             c=day%7;
             j=a+b+c;
             w=j%7;
-            dayt.setText("The day is " + weekdays[w]);
+            day_display_text_view.setText("The day is " + weekdays[w]);
         }
     }
     @Override

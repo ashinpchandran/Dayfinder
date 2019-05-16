@@ -1,7 +1,6 @@
 package com.tapp.dayfinder;
 
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
@@ -12,7 +11,6 @@ import android.widget.NumberPicker;
 public class WeekDifference extends AppCompatActivity {
 
     public NumberPicker np1,np2,np3,np4,np5,np6;
-    public String[] months;
     public int dif=0,w=0,r=0;
 
     @Override
@@ -20,21 +18,21 @@ public class WeekDifference extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Making notification bar transparent
-        if (Build.VERSION.SDK_INT >= 21) {
+
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             assert getSupportActionBar() != null;
             getSupportActionBar().hide();
-        }
+
 
         setContentView(R.layout.daydifference);
 
 
-        np1 = (NumberPicker) findViewById(R.id.np1);
-        np2 = (NumberPicker) findViewById(R.id.np2);
-        np3 = (NumberPicker) findViewById(R.id.np3);
-        np4 = (NumberPicker) findViewById(R.id.np4);
-        np5 = (NumberPicker) findViewById(R.id.np5);
-        np6 = (NumberPicker) findViewById(R.id.np6);
+        np1 =  findViewById(R.id.np1);
+        np2 =  findViewById(R.id.np2);
+        np3 =  findViewById(R.id.np3);
+        np4 =  findViewById(R.id.np4);
+        np5 =  findViewById(R.id.np5);
+        np6 =  findViewById(R.id.np6);
 
         np1.setMinValue(1);
         np1.setMaxValue(31);
@@ -148,7 +146,7 @@ public class WeekDifference extends AppCompatActivity {
                 else
                     open();
             }
-            if((y1==y2)&&(m1!=m2)&&(m2>m1))
+            if((y1==y2)&&(m2>m1))
             {
                 int rd1=0,rd2=0;
                 if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
