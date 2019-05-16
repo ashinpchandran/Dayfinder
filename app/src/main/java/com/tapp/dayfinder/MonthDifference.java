@@ -23,7 +23,6 @@ public class MonthDifference extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Making notification bar transparent
-
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             assert getSupportActionBar() != null;
             getSupportActionBar().hide();
