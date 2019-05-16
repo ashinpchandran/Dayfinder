@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -9,8 +10,6 @@
         android:id="@+id/np6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.802"
@@ -116,8 +115,9 @@
         android:layout_width="250dp"
         android:layout_height="60dp"
         android:layout_marginTop="25dp"
-        android:text="@string/calculate"
+        android:background="@color/colorAccent"
         android:onClick="onClick"
+        android:text="@string/calculate"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/np4" />

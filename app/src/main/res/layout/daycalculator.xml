@@ -83,6 +83,8 @@
         android:layout_height="60dp"
         android:layout_marginTop="30dp"
         android:text="@string/calculate_day"
+        android:textColor="@color/white"
+        android:background="@color/colorPrimary"
         android:onClick="onClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
