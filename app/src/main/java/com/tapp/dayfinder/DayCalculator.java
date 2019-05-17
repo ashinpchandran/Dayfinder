@@ -11,7 +11,7 @@ public class DayCalculator extends AppCompatActivity {
 
 
     public TextView day_display_text_view;
-    public NumberPicker np1,np2,np3;
+    public NumberPicker number_picker_day,number_picker_month,number_picker_year;
 
 
     @Override
@@ -29,16 +29,18 @@ public class DayCalculator extends AppCompatActivity {
 
         day_display_text_view =  findViewById(R.id.textView2);
 
-        np1 =  findViewById(R.id.np1);
-        np2 =  findViewById(R.id.np2);
-        np3 =  findViewById(R.id.np3);
+        number_picker_day =  findViewById(R.id.number_picker_day);
+        number_picker_month =  findViewById(R.id.number_picker_month);
+        number_picker_year =  findViewById(R.id.number_picker_year);
 
-        np1.setMinValue(1);
-        np1.setMaxValue(31);
+        //Minimum and maximum values for the day selecting number picker.
+        number_picker_day.setMinValue(1);
+        number_picker_day.setMaxValue(31);
 
-        np3.setMinValue(1000);
-        np3.setMaxValue(9999);
-        np3.setValue(2019);
+        //Minimum and maximum values for the year selecting number picker.
+        number_picker_year.setMinValue(1000);
+        number_picker_year.setMaxValue(9999);
+        number_picker_year.setValue(2019);
 
         String[] months = new String[12];
         months[0] = "January";
@@ -54,9 +56,10 @@ public class DayCalculator extends AppCompatActivity {
         months[10]= "November";
         months[11]= "December";
 
-        np2.setMaxValue(months.length-1);
-        np2.setMinValue(0);
-        np2.setDisplayedValues(months);
+        //Minimum and maximum values for the month selecting number picker.
+        number_picker_month.setMaxValue(months.length-1);
+        number_picker_month.setMinValue(0);
+        number_picker_month.setDisplayedValues(months);
 
 
     }
@@ -69,6 +72,8 @@ public class DayCalculator extends AppCompatActivity {
             int mon;
             int[] calc = new int[3];
             int[] days = new int[12];
+
+            //Array of key values corresponding to the months
             days[0] = 6;
             days[1] = 2;
             days[2] = 2;
@@ -81,11 +86,20 @@ public class DayCalculator extends AppCompatActivity {
             days[9] = 6;
             days[10] =2;
             days[11] =4;
-            day = np1.getValue();
-            year = np3.getValue();
-            mon = np2.getValue();
+
+            //fetching the inputs from the number pickers to the variables.
+            day = number_picker_day.getValue();
+            year = number_picker_year.getValue();
+            mon = number_picker_month.getValue();
+
+
+            //if input year is 2019, then calc[0] will hold 2000
             calc[0] = (((year/100)/4)*4)*100;
+
+            //if input year is 2019, then calc[1] will hold 0
             calc[1] = ((year-calc[0])/100)*100;
+
+            //if input year is 2019, then calc[2] will hold 19
             calc[2] = year-(calc[0]+calc[1]);
 
 
@@ -97,6 +111,7 @@ public class DayCalculator extends AppCompatActivity {
             weekdays[4] = "Thursday";
             weekdays[5] = "Friday";
             weekdays[6] = "Saturday";
+
             switch(mon)
             {
                 case 0:
@@ -143,13 +158,18 @@ public class DayCalculator extends AppCompatActivity {
                 e=3;
             if(calc[1]==300)
                 e=1;
+
+            //19/4=4
             t=calc[2]/4;
+
             a=(t%7)+calc[2];
             a=a+e;
             c=day%7;
             j=a+b+c;
             w=j%7;
-            day_display_text_view.setText("The day is " + weekdays[w]);
+
+            int display_month = mon + 1;
+            day_display_text_view.setText(day + "/" + display_month + "/" + year + " is " + weekdays[w]);
         }
     }
     @Override
