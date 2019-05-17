@@ -66,7 +66,7 @@
             app:layout_constraintHeight_percent="0.50">
 
             <Button
-                android:id="@+id/imageButton1"
+                android:id="@+id/Button_1"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
 
@@ -80,7 +80,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/imageButton2"
+                android:id="@+id/Button_2"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:background="@drawable/button_shape_2"
@@ -107,7 +107,7 @@
             app:layout_constraintHeight_percent="0.50">
 
             <Button
-                android:id="@+id/imageButton3"
+                android:id="@+id/Button_3"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
 
@@ -122,7 +122,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/imageButton4"
+                android:id="@+id/Button_4"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
 
