@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+
+
 public class DayCalculator extends AppCompatActivity {
 
 
@@ -68,8 +70,8 @@ public class DayCalculator extends AppCompatActivity {
     {
         if(v.getId()==R.id.day_calc_button)
         {
-            int day, year,t,j=0,a,b=0,c,e=0,w;
-            int mon;
+            int day, year,t,j,a,b=0,c,e=0,w;
+            int month;
             int[] calc = new int[3];
             int[] days = new int[12];
 
@@ -87,20 +89,28 @@ public class DayCalculator extends AppCompatActivity {
             days[10] =2;
             days[11] =4;
 
-            //fetching the inputs from the number pickers to the variables.
+            //fetching the inputs from the number pickers to the variables. Assume input is 14 august 1994
+            //day=14
+            //year=1994
+            //month=7
             day = number_picker_day.getValue();
             year = number_picker_year.getValue();
-            mon = number_picker_month.getValue();
+            month = number_picker_month.getValue();
 
 
-            //if input year is 2019, then calc[0] will hold 2000
+
+
+            //Since year is 1994, calc[0] will hold 1600
             calc[0] = (((year/100)/4)*4)*100;
 
-            //if input year is 2019, then calc[1] will hold 0
+
+            //if input year is 2019, then calc[1] will hold 300
             calc[1] = ((year-calc[0])/100)*100;
 
-            //if input year is 2019, then calc[2] will hold 19
+
+            //if input year is 2019, then calc[2] will hold 94
             calc[2] = year-(calc[0]+calc[1]);
+
 
 
             String[] weekdays = new String[7];
@@ -112,7 +122,8 @@ public class DayCalculator extends AppCompatActivity {
             weekdays[5] = "Friday";
             weekdays[6] = "Saturday";
 
-            switch(mon)
+            //Since month is august then value of month will be 7 and then the b = days[7] = 1
+            switch(month)
             {
                 case 0:
                     b = days[0];
@@ -152,6 +163,8 @@ public class DayCalculator extends AppCompatActivity {
                     break;
 
             }
+
+            //calc[1] is 300 and so e = 1
             if(calc[1]==100)
                 e=5;
             if(calc[1]==200)
@@ -159,17 +172,35 @@ public class DayCalculator extends AppCompatActivity {
             if(calc[1]==300)
                 e=1;
 
-            //19/4=4
+
+
+            // calc[2] = 94 so t= 94/4 = 23
             t=calc[2]/4;
 
+
+            // a= (23%7) + 94 = 96
             a=(t%7)+calc[2];
+
+
+            //a= 96 + 1 = 97
             a=a+e;
+
+
+            //if day = 14 then c = 14%7 = 0
             c=day%7;
+
+            //j = 97+1+0= 98
             j=a+b+c;
+
+
+            //w=98%7=0
             w=j%7;
 
-            int display_month = mon + 1;
-            day_display_text_view.setText(day + "/" + display_month + "/" + year + " is " + weekdays[w]);
+
+
+            int display_month = month + 1;
+            String display_string = day + "/" + display_month + "/" + year + " is " + weekdays[w];
+            day_display_text_view.setText(display_string);
         }
     }
     @Override

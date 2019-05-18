@@ -10,7 +10,7 @@ import android.widget.NumberPicker;
 
 public class DayDifference extends AppCompatActivity {
 
-    public NumberPicker np1,np2,np3,np4,np5,np6;
+    public NumberPicker number_picker_day_start,number_picker_month_start,number_picker_year_start,number_picker_day_end,number_picker_month_end,number_picker_year_end;
     public int dif=0;
 
     @Override
@@ -27,24 +27,24 @@ public class DayDifference extends AppCompatActivity {
 
         setContentView(R.layout.daydifference);
 
-        np1 =  findViewById(R.id.np1);
-        np2 =  findViewById(R.id.np2);
-        np3 =  findViewById(R.id.np3);
-        np4 =  findViewById(R.id.np4);
-        np5 =  findViewById(R.id.np5);
-        np6 =  findViewById(R.id.np6);
+        number_picker_day_start =  findViewById(R.id.number_picker_day_start);
+        number_picker_month_start =  findViewById(R.id.number_picker_month_start);
+        number_picker_year_start =  findViewById(R.id.number_picker_year_start);
+        number_picker_day_end =  findViewById(R.id.number_picker_day_end);
+        number_picker_month_end =  findViewById(R.id.number_picker_month_end);
+        number_picker_year_end =  findViewById(R.id.number_picker_year_end);
 
-        np1.setMinValue(1);
-        np1.setMaxValue(31);
-        np4.setMinValue(1);
-        np4.setMaxValue(31);
+        number_picker_day_start.setMinValue(1);
+        number_picker_day_start.setMaxValue(31);
+        number_picker_day_end.setMinValue(1);
+        number_picker_day_end.setMaxValue(31);
 
-        np3.setMinValue(1000);
-        np3.setMaxValue(9999);
-        np3.setValue(2017);
-        np6.setMinValue(1000);
-        np6.setMaxValue(9999);
-        np6.setValue(2017);
+        number_picker_year_start.setMinValue(1000);
+        number_picker_year_start.setMaxValue(9999);
+        number_picker_year_start.setValue(2017);
+        number_picker_year_end.setMinValue(1000);
+        number_picker_year_end.setMaxValue(9999);
+        number_picker_year_end.setValue(2017);
 
         String[] months = new String[12];
         months[0] = "January";
@@ -60,12 +60,12 @@ public class DayDifference extends AppCompatActivity {
         months[10]= "November";
         months[11]= "December";
 
-        np2.setMaxValue(months.length-1);
-        np2.setMinValue(0);
-        np2.setDisplayedValues(months);
-        np5.setMaxValue(months.length-1);
-        np5.setMinValue(0);
-        np5.setDisplayedValues(months);
+        number_picker_month_start.setMaxValue(months.length-1);
+        number_picker_month_start.setMinValue(0);
+        number_picker_month_start.setDisplayedValues(months);
+        number_picker_month_end.setMaxValue(months.length-1);
+        number_picker_month_end.setMinValue(0);
+        number_picker_month_end.setDisplayedValues(months);
 
     }
 
@@ -111,12 +111,12 @@ public class DayDifference extends AppCompatActivity {
         if(v.getId()==R.id.day_diff_button)
         {
             int y1,m1,d1,y2,m2,d2;
-            y1=np3.getValue();
-            y2=np6.getValue();
-            m1=np2.getValue();
-            m2=np5.getValue();
-            d1=np1.getValue();
-            d2=np4.getValue();
+            y1=number_picker_year_start.getValue();
+            y2=number_picker_year_end.getValue();
+            m1=number_picker_month_start.getValue();
+            m2=number_picker_month_end.getValue();
+            d1=number_picker_day_start.getValue();
+            d2=number_picker_day_end.getValue();
             if((y1==y2)&&(m1==m2)&&(d2>d1))
             {
                 dif=d2-d1;
@@ -125,7 +125,7 @@ public class DayDifference extends AppCompatActivity {
             if((y1==y2)&&(m2>m1))
             {
 
-                int rd1=0,rd2=0;
+                int rd1=0,rd2;
                 if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
                     rd1=31-d1;
                 if((y1%4==0)&&(m1==1))
@@ -164,9 +164,9 @@ public class DayDifference extends AppCompatActivity {
             }
             if(((y1==y2)&&(m1>m2))||(y1>y2)||((y1==y2)&&(m1==m2)&&(d1>d2)))
                 open2();
-            if((y1!=y2)&&(y1<y2))
+            if((y1<y2))
             {
-                int rd1=0,rd2=0;
+                int rd1=0,rd2;
                 int mid=0;
                 if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
                     rd1=31-d1;
