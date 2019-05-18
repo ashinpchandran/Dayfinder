@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class DayCalculator extends AppCompatActivity {
 
-
+    Current_Date_Finder CDF = new Current_Date_Finder();
     public TextView day_display_text_view;
     public NumberPicker number_picker_day,number_picker_month,number_picker_year;
 
@@ -31,6 +31,17 @@ public class DayCalculator extends AppCompatActivity {
 
         day_display_text_view =  findViewById(R.id.textView2);
 
+
+        //FETCHING CURRENT YEAR,MONTH AND DAY
+        int cur_year_int = CDF.current_year();
+        int cur_day_int = CDF.current_day();
+        int cur_month_index = CDF.current_month();
+
+//        Log.i("cur_day==>", Integer.toString(cur_day_int));
+//        Log.i("cur_month_index==>", Integer.toString(cur_month_index));
+//        Log.i("cur_year==>", Integer.toString(cur_year_int));
+
+
         number_picker_day =  findViewById(R.id.number_picker_day);
         number_picker_month =  findViewById(R.id.number_picker_month);
         number_picker_year =  findViewById(R.id.number_picker_year);
@@ -38,11 +49,12 @@ public class DayCalculator extends AppCompatActivity {
         //Minimum and maximum values for the day selecting number picker.
         number_picker_day.setMinValue(1);
         number_picker_day.setMaxValue(31);
+        number_picker_day.setValue(cur_day_int);
 
         //Minimum and maximum values for the year selecting number picker.
         number_picker_year.setMinValue(1000);
         number_picker_year.setMaxValue(9999);
-        number_picker_year.setValue(2019);
+        number_picker_year.setValue(cur_year_int);
 
         String[] months = new String[12];
         months[0] = "January";
@@ -62,6 +74,7 @@ public class DayCalculator extends AppCompatActivity {
         number_picker_month.setMaxValue(months.length-1);
         number_picker_month.setMinValue(0);
         number_picker_month.setDisplayedValues(months);
+        number_picker_month.setValue(cur_month_index);
 
 
     }
