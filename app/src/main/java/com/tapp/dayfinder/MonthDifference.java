@@ -10,6 +10,7 @@ import android.widget.NumberPicker;
 
 public class MonthDifference extends AppCompatActivity {
 
+    Current_Date_Finder CDF = new Current_Date_Finder();
     public NumberPicker number_picker_day_start,number_picker_month_start,number_picker_year_start,number_picker_day_end,number_picker_month_end,number_picker_year_end;
     public int dif=0,mt=0,r=0;
 
@@ -28,6 +29,11 @@ public class MonthDifference extends AppCompatActivity {
 
 
 
+        //FETCHING CURRENT YEAR,MONTH AND DAY
+        int cur_year_int = CDF.current_year();
+        int cur_day_int = CDF.current_day();
+        int cur_month_index = CDF.current_month();
+
         number_picker_day_start =  findViewById(R.id.number_picker_day_start);
         number_picker_month_start =  findViewById(R.id.number_picker_month_start);
         number_picker_year_start =  findViewById(R.id.number_picker_year_start);
@@ -37,15 +43,19 @@ public class MonthDifference extends AppCompatActivity {
 
         number_picker_day_start.setMinValue(1);
         number_picker_day_start.setMaxValue(31);
+        number_picker_day_start.setValue(cur_day_int);
+
         number_picker_day_end.setMinValue(1);
         number_picker_day_end.setMaxValue(31);
+        number_picker_day_end.setValue(cur_day_int);
 
         number_picker_year_start.setMinValue(1000);
         number_picker_year_start.setMaxValue(9999);
-        number_picker_year_start.setValue(2017);
+        number_picker_year_start.setValue(cur_year_int);
+
         number_picker_year_end.setMinValue(1000);
         number_picker_year_end.setMaxValue(9999);
-        number_picker_year_end.setValue(2017);
+        number_picker_year_end.setValue(cur_year_int + 1 );
 
         String[] months = new String[12];
         months[0] = "January";
@@ -64,9 +74,12 @@ public class MonthDifference extends AppCompatActivity {
         number_picker_month_start.setMaxValue(months.length-1);
         number_picker_month_start.setMinValue(0);
         number_picker_month_start.setDisplayedValues(months);
+        number_picker_month_start.setValue(cur_month_index);
+
         number_picker_month_end.setMaxValue(months.length-1);
         number_picker_month_end.setMinValue(0);
         number_picker_month_end.setDisplayedValues(months);
+        number_picker_month_end.setValue(cur_month_index);
     }
 
     public void open()
