@@ -84,37 +84,108 @@ public class MonthDifference extends AppCompatActivity {
 
     public void open()
     {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(mt+" Months and "+ r +" Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        if(mt!=1) {
+            if(r!=1) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(mt + " Months and " + r + " Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
 
+                    }
+                });
 
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
-        });
+            else
+            {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(mt + " Months and " + r + " Day").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        }
+        else
+        {
+            if(r!=1) {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(mt + " Month and " + r + " Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+            else
+            {
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+                alertDialogBuilder.setTitle(mt + " Month and " + r + " Day").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                });
+
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+            }
+        }
     }
     public void open1()
     {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(mt + " Months").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        if(mt!=1) {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(mt + " Months").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-
-            }
-        });
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+                }
+            });
+
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+        else
+        {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(mt + " Month").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+
+                }
+            });
+
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
     }
     public void open2()
     {
