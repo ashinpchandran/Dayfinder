@@ -14,7 +14,9 @@ public class DayCalculator extends AppCompatActivity {
     Current_Date_Finder CDF = new Current_Date_Finder();
     public TextView day_display_text_view;
     public NumberPicker number_picker_day,number_picker_month,number_picker_year;
-
+    public int cur_year_int;
+    public int cur_day_int;
+    public int cur_month_index;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -33,9 +35,9 @@ public class DayCalculator extends AppCompatActivity {
 
 
         //FETCHING CURRENT YEAR,MONTH AND DAY
-        int cur_year_int = CDF.current_year();
-        int cur_day_int = CDF.current_day();
-        int cur_month_index = CDF.current_month();
+        cur_year_int = CDF.current_year();
+        cur_day_int = CDF.current_day();
+        cur_month_index = CDF.current_month();
 
 //        Log.i("cur_day==>", Integer.toString(cur_day_int));
 //        Log.i("cur_month_index==>", Integer.toString(cur_month_index));
@@ -212,7 +214,49 @@ public class DayCalculator extends AppCompatActivity {
 
 
             int display_month = month + 1;
-            String display_string = day + "/" + display_month + "/" + year + " is " + weekdays[w];
+            String display_string;
+
+            if(year == cur_year_int && month == cur_month_index && day ==  cur_day_int) {
+                display_string = day + "/" + display_month + "/" + year + " is " + weekdays[w];
+            }
+            else
+            {
+                if(year > cur_year_int )
+                {
+                    display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                }
+                else
+                {
+                    if(year == cur_year_int)
+                    {
+                        if(month > cur_month_index )
+                        {
+                            display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                        }
+                        else
+                        {
+                            if(month == cur_month_index)
+                            {
+                               if(day > cur_day_int)
+                               {
+                                   display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                               }
+                               else
+                               {
+                                   display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
+                               }
+                            }
+                            else
+                            {
+                                display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
+                            }
+                        }
+                    }
+                    else {
+                        display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
+                    }
+                }
+            }
             day_display_text_view.setText(display_string);
         }
     }
