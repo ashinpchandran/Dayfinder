@@ -86,16 +86,29 @@ public class DayDifference extends AppCompatActivity {
     public void open()
     {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle("The difference is " + dif + " days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        if(dif != 1) {
+            alertDialogBuilder.setTitle("The difference is " + dif + " days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
 
 
+            });
+        }
 
-            }
-        });
+        else
+        {
+            alertDialogBuilder.setTitle("The difference is " + dif + " day").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+
+
+            });
+        }
 
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();

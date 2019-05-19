@@ -87,37 +87,106 @@ public class WeekDifference extends AppCompatActivity {
 
     public void open()
     {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(w+" Weeks and "+ r +" Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        if(w!= 1)
+        {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            if(r!=1)
+            {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+                alertDialogBuilder.setTitle(w + " Weeks and " + r + " Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
 
-
+                    }
+                });
             }
-        });
+            else
+            {
+
+                alertDialogBuilder.setTitle(w + " Weeks and " + r + " Day").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
 
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+                    }
+                });
+            }
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+        else
+        {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            if(r!=1)
+            {
+
+                alertDialogBuilder.setTitle(w + " Week and " + r + " Days").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                });
+            }
+            else
+            {
+
+                alertDialogBuilder.setTitle(w + " Week and " + r + " Day").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                    }
+                });
+            }
+
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+
     }
     public void open1()
     {
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-        alertDialogBuilder.setTitle(w + " Weeks").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        if(w!=1)
+        {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(w + " Weeks").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-
-
-            }
-        });
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
 
 
-        AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+        else
+        {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.setTitle(w + " Week").setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+
+                }
+            });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
+        }
+
+
+
     }
     public void open2()
     {
