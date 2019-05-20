@@ -143,112 +143,105 @@ public class DayDifference extends AppCompatActivity {
             m2=number_picker_month_end.getValue();
             d1=number_picker_day_start.getValue();
             d2=number_picker_day_end.getValue();
-            if((y1==y2)&&(m1==m2)&&(d2>d1))
-            {
-                dif=d2-d1;
-                open();
-            }
-            if((y1==y2)&&(m2>m1))
-            {
 
-                int rd1=0,rd2;
-                if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
-                    rd1=31-d1;
-                if((y1%4==0)&&(m1==1))
-                    rd1=29-d1;
-                if((y1%4!=0)&&(m1==1))
-                    rd1=28-d1;
-                if(m1==3||m1==5||m1==8||m1==10)
-                    rd1=30-d1;
+            //checking for invalid entry
+            if (!CDF.february_29(d1,m1,y1) && !CDF.february_29(d2,m2,y2)) {
 
-                rd2=d2-1;
-                if((m2-m1)==0)
-                {
-                    dif=rd1+rd2;
+                if ((y1 == y2) && (m1 == m2) && (d2 > d1)) {
+                    dif = d2 - d1;
                     open();
                 }
-                else
-                {
-                    int mid=0;
-                    for(int i = m1+1;i<m2;i++)
-                    {
-                        if(i==0||i==2||i==4||i==6||i==7||i==9||i==11)
-                            mid=mid+31;
-                        if(i==3||i==5||i==8||i==10)
-                            mid=mid+30;
-                        if(i==1)
-                        {
-                            if(y1%4==0)
-                                mid=mid+29;
+                if ((y1 == y2) && (m2 > m1)) {
+
+                    int rd1 = 0, rd2;
+                    if (m1 == 0 || m1 == 2 || m1 == 4 || m1 == 6 || m1 == 7 || m1 == 9 || m1 == 11)
+                        rd1 = 31 - d1;
+                    if ((y1 % 4 == 0) && (m1 == 1))
+                        rd1 = 29 - d1;
+                    if ((y1 % 4 != 0) && (m1 == 1))
+                        rd1 = 28 - d1;
+                    if (m1 == 3 || m1 == 5 || m1 == 8 || m1 == 10)
+                        rd1 = 30 - d1;
+
+                    rd2 = d2 - 1;
+                    if ((m2 - m1) == 0) {
+                        dif = rd1 + rd2;
+                        open();
+                    } else {
+                        int mid = 0;
+                        for (int i = m1 + 1; i < m2; i++) {
+                            if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 || i == 11)
+                                mid = mid + 31;
+                            if (i == 3 || i == 5 || i == 8 || i == 10)
+                                mid = mid + 30;
+                            if (i == 1) {
+                                if (y1 % 4 == 0)
+                                    mid = mid + 29;
+                                else
+                                    mid = mid + 28;
+                            }
+                        }
+                        dif = rd1 + mid + rd2;
+                        open();
+                    }
+                }
+                if (((y1 == y2) && (m1 > m2)) || (y1 > y2) || ((y1 == y2) && (m1 == m2) && (d1 > d2)))
+                    open2();
+                if ((y1 < y2)) {
+                    int rd1 = 0, rd2;
+                    int mid = 0;
+                    if (m1 == 0 || m1 == 2 || m1 == 4 || m1 == 6 || m1 == 7 || m1 == 9 || m1 == 11)
+                        rd1 = 31 - d1;
+                    if ((y1 % 4 == 0) && (m1 == 1))
+                        rd1 = 29 - d1;
+                    if ((y1 % 4 != 0) && (m1 == 1))
+                        rd1 = 28 - d1;
+                    if (m1 == 3 || m1 == 5 || m1 == 8 || m1 == 10)
+                        rd1 = 30 - d1;
+
+                    rd2 = d2 - 1;
+
+
+                    for (int i = m1 + 1; i <= 11; i++) {
+                        if (i == 0 || i == 2 || i == 4 || i == 6 || i == 7 || i == 9 || i == 11)
+                            mid = mid + 31;
+                        if (i == 3 || i == 5 || i == 8 || i == 10)
+                            mid = mid + 30;
+                        if (i == 1) {
+                            if (y1 % 4 == 0)
+                                mid = mid + 29;
                             else
-                                mid=mid+28;
+                                mid = mid + 28;
                         }
                     }
-                    dif=rd1+mid+rd2;
+                    for (int j = y1 + 1; j < y2; j++) {
+
+                        if (j % 4 == 0)
+                            mid = mid + 366;
+                        else
+                            mid = mid + 365;
+
+                    }
+                    for (int h = 0; h < m2; h++) {
+                        if (h == 0 || h == 2 || h == 4 || h == 6 || h == 7 || h == 9 || h == 11)
+                            mid = mid + 31;
+                        if (h == 3 || h == 5 || h == 8 || h == 10)
+                            mid = mid + 30;
+                        if (h == 1) {
+                            if (y1 % 4 == 0)
+                                mid = mid + 29;
+                            else
+                                mid = mid + 28;
+                        }
+                    }
+                    dif = rd1 + mid + rd2;
                     open();
+
                 }
+
             }
-            if(((y1==y2)&&(m1>m2))||(y1>y2)||((y1==y2)&&(m1==m2)&&(d1>d2)))
+            else
                 open2();
-            if((y1<y2))
-            {
-                int rd1=0,rd2;
-                int mid=0;
-                if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
-                    rd1=31-d1;
-                if((y1%4==0)&&(m1==1))
-                    rd1=29-d1;
-                if((y1%4!=0)&&(m1==1))
-                    rd1=28-d1;
-                if(m1==3||m1==5||m1==8||m1==10)
-                    rd1=30-d1;
-
-                rd2=d2-1;
-
-
-                for(int i = m1+1;i<=11;i++)
-                {
-                    if(i==0||i==2||i==4||i==6||i==7||i==9||i==11)
-                        mid=mid+31;
-                    if(i==3||i==5||i==8||i==10)
-                        mid=mid+30;
-                    if(i==1)
-                    {
-                        if(y1%4==0)
-                            mid=mid+29;
-                        else
-                            mid=mid+28;
-                    }
-                }
-                for(int j=y1+1;j<y2;j++)
-                {
-
-                    if(j%4==0)
-                        mid=mid+366;
-                    else
-                        mid=mid+365;
-
-                }
-                for(int h=0;h<m2;h++)
-                {
-                    if(h==0||h==2||h==4||h==6||h==7||h==9||h==11)
-                        mid=mid+31;
-                    if(h==3||h==5||h==8||h==10)
-                        mid=mid+30;
-                    if(h==1)
-                    {
-                        if(y1%4==0)
-                            mid=mid+29;
-                        else
-                            mid=mid+28;
-                    }
-                }
-                dif=rd1+mid+rd2;
-                open();
-
-            }
-
-
         }
     }
 

@@ -112,152 +112,138 @@ public class DayCalculator extends AppCompatActivity {
             year = number_picker_year.getValue();
             month = number_picker_month.getValue();
 
+            //checking for invalid entry
+           if (CDF.february_29(day,month,year))
+
+               day_display_text_view.setText("Invalid Entry!!!");
+
+           else {
 
 
-
-            //Since year is 1994, calc[0] will hold 1600
-            calc[0] = (((year/100)/4)*4)*100;
-
-
-            //if input year is 2019, then calc[1] will hold 300
-            calc[1] = ((year-calc[0])/100)*100;
+               //Since year is 1994, calc[0] will hold 1600
+               calc[0] = (((year / 100) / 4) * 4) * 100;
 
 
-            //if input year is 2019, then calc[2] will hold 94
-            calc[2] = year-(calc[0]+calc[1]);
+               //if input year is 2019, then calc[1] will hold 300
+               calc[1] = ((year - calc[0]) / 100) * 100;
 
 
-
-            String[] weekdays = new String[7];
-            weekdays[0] = "Sunday";
-            weekdays[1] = "Monday";
-            weekdays[2] = "Tuesday";
-            weekdays[3] = "Wednesday";
-            weekdays[4] = "Thursday";
-            weekdays[5] = "Friday";
-            weekdays[6] = "Saturday";
-
-            //Since month is august then value of month will be 7 and then the b = days[7] = 1
-            switch(month)
-            {
-                case 0:
-                    b = days[0];
-                    break;
-                case 1:
-                    b = days[1];
-                    break;
-                case 2:
-                    b = days[2];
-                    break;
-                case 3:
-                    b = days[3];
-                    break;
-                case 4:
-                    b = days[4];
-                    break;
-                case 5:
-                    b = days[5];
-                    break;
-                case 6:
-                    b = days[6];
-                    break;
-                case 7:
-                    b = days[7];
-                    break;
-                case 8:
-                    b = days[8];
-                    break;
-                case 9:
-                    b = days[9];
-                    break;
-                case 10:
-                    b = days[10];
-                    break;
-                case 11:
-                    b = days[11];
-                    break;
-
-            }
-
-            //calc[1] is 300 and so e = 1
-            if(calc[1]==100)
-                e=5;
-            if(calc[1]==200)
-                e=3;
-            if(calc[1]==300)
-                e=1;
+               //if input year is 2019, then calc[2] will hold 94
+               calc[2] = year - (calc[0] + calc[1]);
 
 
+               String[] weekdays = new String[7];
+               weekdays[0] = "Sunday";
+               weekdays[1] = "Monday";
+               weekdays[2] = "Tuesday";
+               weekdays[3] = "Wednesday";
+               weekdays[4] = "Thursday";
+               weekdays[5] = "Friday";
+               weekdays[6] = "Saturday";
 
-            // calc[2] = 94 so t= 94/4 = 23
-            t=calc[2]/4;
+               //Since month is august then value of month will be 7 and then the b = days[7] = 1
+               switch (month) {
+                   case 0:
+                       b = days[0];
+                       break;
+                   case 1:
+                       b = days[1];
+                       break;
+                   case 2:
+                       b = days[2];
+                       break;
+                   case 3:
+                       b = days[3];
+                       break;
+                   case 4:
+                       b = days[4];
+                       break;
+                   case 5:
+                       b = days[5];
+                       break;
+                   case 6:
+                       b = days[6];
+                       break;
+                   case 7:
+                       b = days[7];
+                       break;
+                   case 8:
+                       b = days[8];
+                       break;
+                   case 9:
+                       b = days[9];
+                       break;
+                   case 10:
+                       b = days[10];
+                       break;
+                   case 11:
+                       b = days[11];
+                       break;
+
+               }
+
+               //calc[1] is 300 and so e = 1
+               if (calc[1] == 100)
+                   e = 5;
+               if (calc[1] == 200)
+                   e = 3;
+               if (calc[1] == 300)
+                   e = 1;
 
 
-            // a= (23%7) + 94 = 96
-            a=(t%7)+calc[2];
+               // calc[2] = 94 so t= 94/4 = 23
+               t = calc[2] / 4;
 
 
-            //a= 96 + 1 = 97
-            a=a+e;
+               // a= (23%7) + 94 = 96
+               a = (t % 7) + calc[2];
 
 
-            //if day = 14 then c = 14%7 = 0
-            c=day%7;
-
-            //j = 97+1+0= 98
-            j=a+b+c;
+               //a= 96 + 1 = 97
+               a = a + e;
 
 
-            //w=98%7=0
-            w=j%7;
+               //if day = 14 then c = 14%7 = 0
+               c = day % 7;
+
+               //j = 97+1+0= 98
+               j = a + b + c;
 
 
+               //w=98%7=0
+               w = j % 7;
 
-            int display_month = month + 1;
-            String display_string;
 
-            if(year == cur_year_int && month == cur_month_index && day ==  cur_day_int) {
-                display_string = day + "/" + display_month + "/" + year + " is " + weekdays[w];
-            }
-            else
-            {
-                if(year > cur_year_int )
-                {
-                    display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
-                }
-                else
-                {
-                    if(year == cur_year_int)
-                    {
-                        if(month > cur_month_index )
-                        {
-                            display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
-                        }
-                        else
-                        {
-                            if(month == cur_month_index)
-                            {
-                               if(day > cur_day_int)
-                               {
-                                   display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
-                               }
-                               else
-                               {
+               int display_month = month + 1;
+               String display_string;
+
+               if (year == cur_year_int && month == cur_month_index && day == cur_day_int) {
+                   display_string = day + "/" + display_month + "/" + year + " is " + weekdays[w];
+               } else {
+                   if (year > cur_year_int) {
+                       display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                   } else {
+                       if (year == cur_year_int) {
+                           if (month > cur_month_index) {
+                               display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                           } else {
+                               if (month == cur_month_index) {
+                                   if (day > cur_day_int) {
+                                       display_string = day + "/" + display_month + "/" + year + " will be " + weekdays[w];
+                                   } else {
+                                       display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
+                                   }
+                               } else {
                                    display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
                                }
-                            }
-                            else
-                            {
-                                display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
-                            }
-                        }
-                    }
-                    else {
-                        display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
-                    }
-                }
-            }
-            day_display_text_view.setText(display_string);
+                           }
+                       } else {
+                           display_string = day + "/" + display_month + "/" + year + " was " + weekdays[w];
+                       }
+                   }
+               }
+               day_display_text_view.setText(display_string);
+           }
         }
     }
     @Override
