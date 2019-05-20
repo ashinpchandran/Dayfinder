@@ -76,7 +76,7 @@ import java.util.Date;
 
      boolean february_29 (int day, int month, int year)
      {
-         boolean invalid = true;
+         boolean invalid;
 
          //If month is April || June || September || November
          if (month == 3 || month == 5 || month == 8 || month == 10)
@@ -114,7 +114,7 @@ import java.util.Date;
 
     private boolean leap_year (int year)
      {
-         boolean flag = false;
+         boolean flag ;
          if(year % 400 == 0)
          {
              flag = true;
