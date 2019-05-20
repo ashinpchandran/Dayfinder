@@ -73,4 +73,64 @@ import java.util.Date;
 
          return cur_month_index;
      }
+
+     boolean february_29 (int day, int month, int year)
+     {
+         boolean invalid = true;
+
+         //If month is April || June || September || November
+         if (month == 3 || month == 5 || month == 8 || month == 10)
+         {
+             if (day == 31)
+                 invalid = true;
+             else
+                 invalid = false;
+         }
+         else
+             invalid = false;
+
+         //If month is February
+         if (month == 1)
+         {
+             if(day > 29)
+                 invalid = true;
+             else
+             {
+                 if (day == 29 )
+                 {
+                     if(leap_year(year))
+                         invalid = false;
+                     else
+                         invalid = true;
+                 }
+                 else
+                 {
+                     invalid = false;
+                 }
+             }
+         }
+         return invalid;
+     }
+
+    private boolean leap_year (int year)
+     {
+         boolean flag = false;
+         if(year % 400 == 0)
+         {
+             flag = true;
+         }
+         else if (year % 100 == 0)
+         {
+             flag = false;
+         }
+         else if(year % 4 == 0)
+         {
+             flag = true;
+         }
+         else
+         {
+             flag = false;
+         }
+         return flag;
+     }
 }

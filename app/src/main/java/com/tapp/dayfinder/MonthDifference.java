@@ -215,94 +215,90 @@ public class MonthDifference extends AppCompatActivity {
             m2=number_picker_month_end.getValue();
             d1=number_picker_day_start.getValue();
             d2=number_picker_day_end.getValue();
-            if((y1==y2)&&(m1==m2)&&(d2>d1))
-            {
-                dif=d2-d1;
-                r=dif;
-                open();
-            }
-            if((y1==y2)&&(m2>m1))
-            {
-                int rd1=0,rd2;
-                if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
-                    rd1=31-d1;
-                if((y1%4==0)&&(m1==1))
-                    rd1=29-d1;
-                if((y1%4!=0)&&(m1==1))
-                    rd1=28-d1;
-                if(m1==3||m1==5||m1==8||m1==10)
-                    rd1=30-d1;
 
-                rd2=d2-1;
-                if((m2-m1)==0)
-                {
-                    dif=rd1+rd2;
-                    mt=dif/30;
-                    r=dif%30;
-                    if(r==0)
-                        open1();
-                    else
-                        open();
+            //checking for invalid entry
+            if (!CDF.february_29(d1,m1,y1) && !CDF.february_29(d2,m2,y2)) {
+
+                if ((y1 == y2) && (m1 == m2) && (d2 > d1)) {
+                    dif = d2 - d1;
+                    r = dif;
+                    open();
                 }
-                else
-                {
-                    int mid=0;
-                    for(int i = m1+1;i<m2;i++)
-                    {
+                if ((y1 == y2) && (m2 > m1)) {
+                    int rd1 = 0, rd2;
+                    if (m1 == 0 || m1 == 2 || m1 == 4 || m1 == 6 || m1 == 7 || m1 == 9 || m1 == 11)
+                        rd1 = 31 - d1;
+                    if ((y1 % 4 == 0) && (m1 == 1))
+                        rd1 = 29 - d1;
+                    if ((y1 % 4 != 0) && (m1 == 1))
+                        rd1 = 28 - d1;
+                    if (m1 == 3 || m1 == 5 || m1 == 8 || m1 == 10)
+                        rd1 = 30 - d1;
+
+                    rd2 = d2 - 1;
+                    if ((m2 - m1) == 0) {
+                        dif = rd1 + rd2;
+                        mt = dif / 30;
+                        r = dif % 30;
+                        if (r == 0)
+                            open1();
+                        else
+                            open();
+                    } else {
+                        int mid = 0;
+                        for (int i = m1 + 1; i < m2; i++) {
+                            mid++;
+                        }
+                        dif = mid + ((rd2 + rd1) / 30);
+                        mt = dif;
+                        r = ((rd2 + rd1) % 30);
+                        if (r == 0)
+                            open1();
+                        else
+                            open();
+                    }
+
+
+                }
+                if (((y1 == y2) && (m1 > m2)) || (y1 > y2) || ((y1 == y2) && (m1 == m2) && (d1 > d2)))
+                    open2();
+                if ((y1 < y2)) {
+                    int rd1 = 0, rd2;
+                    int mid = 0;
+                    if (m1 == 0 || m1 == 2 || m1 == 4 || m1 == 6 || m1 == 7 || m1 == 9 || m1 == 11)
+                        rd1 = 31 - d1;
+                    if ((y1 % 4 == 0) && (m1 == 1))
+                        rd1 = 29 - d1;
+                    if ((y1 % 4 != 0) && (m1 == 1))
+                        rd1 = 28 - d1;
+                    if (m1 == 3 || m1 == 5 || m1 == 8 || m1 == 10)
+                        rd1 = 30 - d1;
+
+                    rd2 = d2 - 1;
+
+
+                    for (int i = m1 + 1; i <= 11; i++) {
                         mid++;
                     }
-                    dif=mid+((rd2+rd1)/30);
-                    mt=dif;
-                    r=((rd2+rd1)%30);
-                    if(r==0)
+                    for (int j = y1 + 1; j < y2; j++) {
+
+                        mid = mid + 12;
+
+                    }
+                    for (int h = 0; h < m2; h++) {
+                        mid++;
+                    }
+                    dif = mid + ((rd2 + rd1) / 30);
+                    mt = dif;
+                    r = ((rd2 + rd1) % 30);
+                    if (r == 0)
                         open1();
                     else
                         open();
                 }
-
-
             }
-            if(((y1==y2)&&(m1>m2))||(y1>y2)||((y1==y2)&&(m1==m2)&&(d1>d2)))
+            else
                 open2();
-            if((y1<y2))
-            {
-                int rd1=0,rd2;
-                int mid=0;
-                if(m1==0||m1==2||m1==4||m1==6||m1==7||m1==9||m1==11)
-                    rd1=31-d1;
-                if((y1%4==0)&&(m1==1))
-                    rd1=29-d1;
-                if((y1%4!=0)&&(m1==1))
-                    rd1=28-d1;
-                if(m1==3||m1==5||m1==8||m1==10)
-                    rd1=30-d1;
-
-                rd2=d2-1;
-
-
-                for(int i = m1+1;i<=11;i++)
-                {
-                    mid++;
-                }
-                for(int j=y1+1;j<y2;j++)
-                {
-
-                    mid=mid+12;
-
-                }
-                for(int h=0;h<m2;h++)
-                {
-                    mid++;
-                }
-                dif=mid+((rd2+rd1)/30);
-                mt=dif;
-                r=((rd2+rd1)%30);
-                if(r==0)
-                    open1();
-                else
-                    open();
-            }
-
         }
     }
 
